@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sqwiggle::Ruby
 
 TODO: Write a gem description
@@ -27,3 +28,9 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+=======
+sqwiggle-ruby
+=============
+
+A Ruby gem for the Sqwiggle API
+>>>>>>> d9dc51241771d910c56917e9acec87daadc5e1fb
