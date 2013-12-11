@@ -1,2 +1,2 @@
-require 'sqwiggle-ruby'
+require 'sqwiggle'
 require 'rspec'

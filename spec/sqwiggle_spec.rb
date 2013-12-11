@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Sqwiggle do
-  specify { Sqwiggle.exists? }
+  specify { Sqwiggle }
+  specify { Sqwiggle::Client }
+  specify { Sqwiggle::Message }
 end
