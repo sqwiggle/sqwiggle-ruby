@@ -1,13 +1,13 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sqwiggle/ruby/version'
+require 'sqwiggle/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sqwiggle-ruby"
-  spec.version       = Sqwiggle::Ruby::VERSION
+  spec.version       = Sqwiggle::VERSION
   spec.authors       = ["Luke Roberts"]
-  spec.email         = ["email@luke-roberts.co.uk"]
+  spec.email         = ["luke@sqwiggle.com"]
   spec.description   = %q{Ruby wrapper for the sqwiggle API}
   spec.summary       = %q{Ruby wrapper for the sqwiggle API}
   spec.homepage      = ""
