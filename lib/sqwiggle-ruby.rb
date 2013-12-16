@@ -1,4 +1,5 @@
 require 'faraday'
+require 'virtus'
 require "sqwiggle/version"
 require "sqwiggle/client"
 require "sqwiggle/resource"

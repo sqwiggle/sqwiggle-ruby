@@ -1,6 +1,5 @@
 module Sqwiggle
-  class Message
-    include Resource
-
+  class Message < Resource
+    attribute :text, String
   end
 end

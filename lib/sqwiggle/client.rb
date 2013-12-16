@@ -17,7 +17,8 @@ module Sqwiggle
     private
 
     def url
-      'localhost:3001'
+      'http://localhost:3001'
+      # 'https://api.sqwiggle.com/'
     end
 
     def connection
