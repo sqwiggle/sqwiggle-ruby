@@ -4,4 +4,11 @@ describe Sqwiggle do
   specify { Sqwiggle }
   specify { Sqwiggle::Client }
   specify { Sqwiggle::Message }
+
+  describe ".token=" do
+    before do
+      Sqwiggle.token = 'token'
+    end
+    specify { Sqwiggle.token.should be == 'token' }
+  end
 end
