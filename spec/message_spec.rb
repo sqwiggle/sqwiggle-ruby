@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Sqwiggle::Message do
 
+  before do
+    Sqwiggle.token = 'some_token'
+  end
+
   describe "initialization" do
     it "accepts a hash" do
       m = Sqwiggle::Message.new({text:'some text'})
