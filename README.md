@@ -1,5 +1,7 @@
 # Sqwiggle::Ruby
 
+![Build Status](https://api.travis-ci.org/sqwiggle/sqwiggle-ruby.png)
+
 A Ruby gem for the Sqwiggle API.
 
 ## Installation
