@@ -14,6 +14,14 @@ module Sqwiggle
       connection.get endpoint, params
     end
 
+    def messages
+      Service.new Message, self
+    end
+
+    def users
+      Service.new User, self
+    end
+
     private
 
     def url
