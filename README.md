@@ -1,4 +1,8 @@
-# Sqwiggle::Ruby
+# Ruby Client for the Sqwiggle API
+
+The API and this gem are currently in BETA
+
+Comments, pull requests, discussion and input are all welcome at this stage.
 
 ![Build Status](https://api.travis-ci.org/sqwiggle/sqwiggle-ruby.png)
 
@@ -20,7 +24,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create an API Client at https://www.sqwiggle.com/company/clients
+
 
 ## Contributing
 

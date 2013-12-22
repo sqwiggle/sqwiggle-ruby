@@ -19,6 +19,8 @@ require "sqwiggle/errors/server_error"
 require "sqwiggle/invite"
 require "sqwiggle/message"
 require "sqwiggle/user"
+require "sqwiggle/notification"
+require "sqwiggle/api_client"
 
 module Sqwiggle
   class << self

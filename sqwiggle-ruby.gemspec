@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["luke@sqwiggle.com"]
   spec.description   = %q{Ruby wrapper for the sqwiggle API}
   spec.summary       = %q{Ruby wrapper for the sqwiggle API}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/sqwiggle/sqwiggle-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

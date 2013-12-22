@@ -27,6 +27,10 @@ module Sqwiggle
       Service.new User, self
     end
 
+    def api_clients
+      ApiClient.new User, self
+    end
+
     private
 
     def url
@@ -36,7 +40,6 @@ module Sqwiggle
     def connection
       @connection ||= Faraday.new(url:url) do |f|
         f.request  :url_encoded             # form-encode POST params
-        f.response :logger                  # log requests to STDOUT
         f.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         f.basic_auth token, 'X'
         f.use ErrorHandler
