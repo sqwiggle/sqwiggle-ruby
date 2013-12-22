@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Sqwiggle::Message do
 
+  it_behaves_like "a resource"
+
   before do
     Sqwiggle.token = 'some_token'
   end

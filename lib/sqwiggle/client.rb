@@ -3,11 +3,16 @@ module Sqwiggle
     class NoTokenError < StandardError;end;
 
     attr_accessor :token
+    attr_writer :url #for testing purposes
 
     def initialize(token=nil)
       unless @token = token || Sqwiggle.token
         raise NoTokenError 
       end
+    end
+
+    def ==(val)
+      self.class == val.class && val.token == token
     end
 
     def get(endpoint, params={})
@@ -25,8 +30,7 @@ module Sqwiggle
     private
 
     def url
-      'http://localhost:3001'
-      # 'https://api.sqwiggle.com/'
+      @url || 'https://api.sqwiggle.com/'
     end
 
     def connection
@@ -35,6 +39,7 @@ module Sqwiggle
         f.response :logger                  # log requests to STDOUT
         f.adapter  Faraday.default_adapter  # make requests with Net::HTTP
         f.basic_auth token, 'X'
+        f.use ErrorHandler
       end
     end
 

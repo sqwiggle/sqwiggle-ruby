@@ -26,6 +26,14 @@ module Sqwiggle
         self.new(JSON.parse(client.get("#{endpoint}/#{id}").body))
       end
 
+      def endpoint
+        @endpoint || default_endpoint
+      end
+
+      def default_endpoint
+        "/#{self.to_s.downcase.split('::').last}s"
+      end
+
     end
   end
 end
