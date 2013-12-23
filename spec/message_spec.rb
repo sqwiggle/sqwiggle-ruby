@@ -122,5 +122,9 @@ describe Sqwiggle::Message do
     end
   end
 
+  describe "delete" do
+
+  end
+
 
 end
