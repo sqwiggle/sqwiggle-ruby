@@ -19,6 +19,19 @@ module Sqwiggle
       connection.get endpoint, params
     end
 
+    def put(endpoint, params)
+      connection.put endpoint, params
+    end
+
+    def post(endpoint, params)
+      connection.post endpoint, params
+    end
+
+    def delete(endpoint)
+      connection.post endpoint
+      true
+    end
+
     def messages
       Service.new Message, self
     end

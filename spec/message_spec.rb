@@ -2,10 +2,22 @@ require 'spec_helper'
 
 describe Sqwiggle::Message do
 
+  before do
+    Sqwiggle.token = 'token'
+  end
+
   it_behaves_like "a resource"
 
-  before do
-    Sqwiggle.token = 'some_token'
+  subject do
+    Sqwiggle::Message.new({
+      id:1,
+      text:'dutch coffee',
+      author: {
+        id:1,
+        type:'user',
+        name:'Some Name'
+      }
+    })
   end
 
   describe "initialization" do
@@ -21,26 +33,13 @@ describe Sqwiggle::Message do
   end
 
   describe "#author" do
-
     context "with a user" do
-
       before do
-        Sqwiggle.token = 'token'
         stub_request(:get, "https://token:X@api.sqwiggle.com/users/1").to_return({
           :body => "{\"id\":1, \"name\":\"Some Name\"}"
         })
       end
 
-      subject do
-        Sqwiggle::Message.new({
-          text:'dutch coffee',
-          author: {
-            id:1,
-            type:'user',
-            name:'Some Name'
-          }
-        })
-      end
       specify { subject.author.should be_kind_of(Sqwiggle::User) }
       specify { subject.author.id.should == 1 }
     end
@@ -60,6 +59,68 @@ describe Sqwiggle::Message do
       # specify { subject.author.should be_kind_of(Sqwiggle::ApiClient) }
       # specify { subject.author.id.should == 1 }
     end
+  end
+
+  describe "#update" do
+    before do
+      stub_request(:put, "https://token:X@api.sqwiggle.com/messages/1").with({
+        :body => { :text => 'New Name' } 
+      }).to_return({
+        :body => "{\"id\":1, \"text\":\"New Name\"}"
+      })
+    end
+
+    it "updates the record" do
+      subject.update :text => 'New Name'
+      subject.text.should be == 'New Name'
+    end
 
   end
+
+  describe ".create" do
+    before do
+      stub_request(:post, "https://token:X@api.sqwiggle.com/messages").with({
+        :body => { :text => 'The Name' } 
+      }).to_return({
+        :body => "{\"id\":1, \"text\":\"The Name\"}"
+      })
+    end
+
+    it "creates the message" do
+      m = Sqwiggle::Message.create :text =>'The Name'
+      m.class.should be == Sqwiggle::Message 
+      m.text.should be == "The Name"
+    end
+  end
+
+  describe "#save" do
+    context "with a new record" do
+      before do
+        stub_request(:post, "https://token:X@api.sqwiggle.com/messages").to_return({
+        :body => "{\"id\":1, \"text\":\"The Name\"}"
+      })
+      end
+      subject { Sqwiggle::Message.new(text:'The Name') }
+      it "saves the new record" do
+        subject.save.should be == true
+        subject.id.should be == 1
+        assert_requested :post, "https://token:X@api.sqwiggle.com/messages"
+      end
+    end
+
+    context "with an existing record" do
+      before do
+        stub_request(:put, "https://token:X@api.sqwiggle.com/messages/1").to_return({
+        :body => "{\"id\":1, \"text\":\"The Name\"}"
+      })
+      end
+      subject { Sqwiggle::Message.new(id:1, text:'The Name') }
+      it "saves the new record" do
+        subject.save.should be == true
+        assert_requested :put, "https://token:X@api.sqwiggle.com/messages/1"
+      end
+    end
+  end
+
+
 end

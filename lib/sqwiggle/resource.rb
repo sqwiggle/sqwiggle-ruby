@@ -1,6 +1,6 @@
 module Sqwiggle
   class Resource
-    
+
     include Virtus.model
 
     attribute :client, Client, default: :default_client 
@@ -11,7 +11,7 @@ module Sqwiggle
     end
 
     class << self
-      
+
       attr_accessor :endpoint
 
       def all(client=Client.new)
@@ -26,6 +26,10 @@ module Sqwiggle
         self.new(JSON.parse(client.get("#{endpoint}/#{id}").body))
       end
 
+      def create(params, client=Client.new)
+        self.new(JSON.parse(client.post("#{endpoint}", params).body))
+      end
+
       def endpoint
         @endpoint || default_endpoint
       end
@@ -35,5 +39,22 @@ module Sqwiggle
       end
 
     end
+
+    def update(params)
+      res = client.put("#{self.class.endpoint}/#{id}", params)
+      attrs = JSON.parse(res.body, :symbolize_names => true)
+      self.attributes = attrs
+      self
+    end
+
+    def save
+      if(id != nil)
+        update(self.attributes)
+      else
+        self.attributes = self.class.create(attributes, client).attributes
+      end
+      true
+    end
+
   end
 end
