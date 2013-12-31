@@ -1,6 +1,6 @@
 # Ruby Client for the Sqwiggle API
 
-The API and this gem are currently in BETA
+The API and this gem are currently in ~~BETA~~ ALPHA
 
 Comments, pull requests, discussion and input are all welcome at this stage.
 
@@ -25,6 +25,10 @@ Or install it yourself as:
 ## Usage
 
 Create an API Client at https://www.sqwiggle.com/company/clients
+
+## TODO
+
+ * Compile todo list
 
 
 ## Contributing
