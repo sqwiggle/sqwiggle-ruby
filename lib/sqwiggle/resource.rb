@@ -56,5 +56,10 @@ module Sqwiggle
       true
     end
 
+    #TODO
+    # def delete
+
+    # end
+
   end
 end
