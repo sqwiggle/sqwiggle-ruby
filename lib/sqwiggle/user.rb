@@ -1,9 +1,9 @@
 module Sqwiggle
-  class User < Resource
+  class User < Api::Resource
     self.endpoint = '/users'
     attribute :name, String
     attribute :role, String
-    attribute :media, String
+    attribute :media, Hash
     attribute :status, String
     attribute :message, String
     attribute :email, String

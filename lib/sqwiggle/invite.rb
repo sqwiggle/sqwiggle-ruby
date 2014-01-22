@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Invite < Resource
+  class Invite < Api::Resource
     attribute :email, String
   end
 end

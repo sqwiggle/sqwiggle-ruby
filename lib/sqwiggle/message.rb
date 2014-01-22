@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Message < Resource
+  class Message < Api::Resource
 
     attribute :text, String
     attribute :type, String

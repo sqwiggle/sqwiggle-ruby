@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Attachment < Resource
+  class Attachment < Api::Resource
     attribute :type, String
     attribute :url, String
     attribute :description, String

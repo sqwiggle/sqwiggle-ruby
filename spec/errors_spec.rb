@@ -14,7 +14,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::BadRequestError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::BadRequestError)
     end
 
   end
@@ -31,7 +31,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::AuthenticationError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::AuthenticationError)
     end
   end
 
@@ -47,7 +47,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::PaymentRequiredError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::PaymentRequiredError)
     end
   end
 
@@ -63,7 +63,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::AuthorizationError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::AuthorizationError)
     end
   end
 
@@ -79,7 +79,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::NotFoundError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::NotFoundError)
     end
   end
 
@@ -95,7 +95,7 @@ describe "api error handling" do
     end
 
     it "raises an exception" do
-      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Errors::ServerError)
+      expect{Sqwiggle::Message.all}.to raise_error(Sqwiggle::Api::Errors::ServerError)
     end
   end
 

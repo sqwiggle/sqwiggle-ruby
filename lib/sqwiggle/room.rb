@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Room < Resource
+  class Room < Api::Resource
     attribute :name, String
     attribute :path, String
   end

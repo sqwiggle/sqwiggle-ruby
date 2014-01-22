@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Notification < Resource
+  class Notification < Api::Resource
     attribute :login, String
     attribute :logout, String
     attribute :workroom_enter, String

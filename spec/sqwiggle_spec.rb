@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sqwiggle do
   specify { Sqwiggle }
-  specify { Sqwiggle::Client }
+  specify { Sqwiggle::Api::Client }
   specify { Sqwiggle::Message }
 
   describe ".token=" do

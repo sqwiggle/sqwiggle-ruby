@@ -1,5 +1,5 @@
 module Sqwiggle
-  class Organization < Resource
+  class Organization < Api::Resource
     attribute :name, String
   end
 end

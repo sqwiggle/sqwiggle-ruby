@@ -4,17 +4,16 @@ require 'virtus'
 
 require "sqwiggle/version"
 
-require "sqwiggle/error_handler"
-require "sqwiggle/service"
-require "sqwiggle/client"
-require "sqwiggle/resource"
-
-require "sqwiggle/errors/authentication_error"
-require "sqwiggle/errors/authorization_error"
-require "sqwiggle/errors/bad_request_error"
-require "sqwiggle/errors/not_found_error"
-require "sqwiggle/errors/payment_required_error"
-require "sqwiggle/errors/server_error"
+require "sqwiggle/api/error_handler"
+require "sqwiggle/api/service"
+require "sqwiggle/api/client"
+require "sqwiggle/api/resource"
+require "sqwiggle/api/errors/authentication_error"
+require "sqwiggle/api/errors/authorization_error"
+require "sqwiggle/api/errors/bad_request_error"
+require "sqwiggle/api/errors/not_found_error"
+require "sqwiggle/api/errors/payment_required_error"
+require "sqwiggle/api/errors/server_error"
 
 require "sqwiggle/invite"
 require "sqwiggle/message"
