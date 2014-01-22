@@ -17,17 +17,21 @@ module Sqwiggle
       def all(client=Client.new)
         [].tap do |result|
           JSON.parse(client.get(self.endpoint).body).each do |item|
-            result << self.new(item)
+            result << self.new(item.merge client:client)
           end
         end
       end
 
       def find(id, client=Client.new)
-        self.new(JSON.parse(client.get("#{endpoint}/#{id}").body))
+        attrs = JSON.parse client.get("#{endpoint}/#{id}").body
+        attrs.merge! client:client
+        self.new attrs
       end
 
       def create(params, client=Client.new)
-        self.new(JSON.parse(client.post("#{endpoint}", params).body))
+        attrs = JSON.parse(client.post("#{endpoint}", params).body)
+        attrs.merge! client:client
+        self.new attrs
       end
 
       def endpoint
@@ -47,6 +51,11 @@ module Sqwiggle
       self
     end
 
+    def delete
+      res = client.delete("#{self.class.endpoint}/#{id}")
+      res.status == 204
+    end
+
     def save
       if(id != nil)
         update(self.attributes)
@@ -55,11 +64,6 @@ module Sqwiggle
       end
       true
     end
-
-    #TODO
-    # def delete
-
-    # end
 
   end
 end

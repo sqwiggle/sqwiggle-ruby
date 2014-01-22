@@ -4,6 +4,11 @@ module Sqwiggle
     attribute :text, String
     attribute :type, String
     attribute :author, Hash
+    attribute :room_id, Integer
+    attribute :attachments, Array
+    attribute :mentions, Array
+    attribute :updated_at, DateTime
+    attribute :created_at, DateTime
 
     def author
       if @author[:type] == 'user'

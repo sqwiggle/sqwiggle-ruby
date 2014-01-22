@@ -8,6 +8,17 @@ describe Sqwiggle::Message do
 
   it_behaves_like "a resource"
 
+  describe "attributes" do
+    subject { described_class.new }
+    it { should respond_to :room_id }
+    it { should respond_to :text }
+    it { should respond_to :author }
+    it { should respond_to :attachments }
+    it { should respond_to :mentions }
+    it { should respond_to :created_at }
+    it { should respond_to :updated_at }
+  end
+
   subject do
     Sqwiggle::Message.new({
       id:1,

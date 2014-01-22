@@ -28,8 +28,7 @@ module Sqwiggle
     end
 
     def delete(endpoint)
-      connection.post endpoint
-      true
+      connection.delete endpoint
     end
 
     def messages
