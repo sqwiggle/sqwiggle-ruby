@@ -40,8 +40,18 @@ module Sqwiggle
         Service.new User, self
       end
 
+      def conversations
+        Service.new Conversation, self
+      end
+
       def api_clients
         ApiClient.new User, self
+      end
+
+      def inspect
+        #This is purely to stop huge console output when inspecting resource
+        #objects as they contain a reference to the loading client
+        "#<Sqwiggle::Api::Client # (#{object_id})>"
       end
 
       private
