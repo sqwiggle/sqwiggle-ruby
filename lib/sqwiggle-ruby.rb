@@ -17,7 +17,9 @@ require "sqwiggle/api/errors/server_error"
 
 require "sqwiggle/invite"
 require "sqwiggle/message"
+require "sqwiggle/conversation"
 require "sqwiggle/user"
+require "sqwiggle/room"
 require "sqwiggle/notification"
 require "sqwiggle/api_client"
 

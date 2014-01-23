@@ -108,8 +108,8 @@ describe Sqwiggle::Message do
     context "with a new record" do
       before do
         stub_request(:post, "https://token:X@api.sqwiggle.com/messages").to_return({
-        :body => "{\"id\":1, \"text\":\"The Name\"}"
-      })
+          :body => "{\"id\":1, \"text\":\"The Name\"}"
+        })
       end
       subject { Sqwiggle::Message.new(text:'The Name') }
       it "saves the new record" do
@@ -122,8 +122,8 @@ describe Sqwiggle::Message do
     context "with an existing record" do
       before do
         stub_request(:put, "https://token:X@api.sqwiggle.com/messages/1").to_return({
-        :body => "{\"id\":1, \"text\":\"The Name\"}"
-      })
+          :body => "{\"id\":1, \"text\":\"The Name\"}"
+        })
       end
       subject { Sqwiggle::Message.new(id:1, text:'The Name') }
       it "saves the new record" do
@@ -133,9 +133,17 @@ describe Sqwiggle::Message do
     end
   end
 
-  describe "delete" do
-
+  describe "#delete" do
+    before do
+      stub_request(:post, "https://token:X@api.sqwiggle.com/messages").to_return({
+        :body => "{\"id\":1, \"text\":\"The Name\"}"
+      })
+      subject { Sqwiggle::Message.new(id:1, text:'The Name') }
+      it "saves the new record" do
+        subject.delete.should be == true
+        assert_requested :delete, "https://token:X@api.sqwiggle.com/messages/1"
+      end
+    end
   end
-
 
 end
