@@ -12,6 +12,20 @@ module Sqwiggle
         end
       end
 
+      def self.service(key, klass)
+        define_method key, -> {
+          instance_eval('Service').new instance_eval(klass), self
+        }
+      end
+
+      service :api_clients, 'ApiClient'
+      service :conversations, 'Conversation'
+      service :invites, 'Invite'
+      service :messages, 'Message'
+      service :organization, 'Organization'
+      service :users, 'User'
+      service :rooms, 'Room'
+
       def ==(val)
         self.class == val.class && val.token == token
       end
@@ -30,22 +44,6 @@ module Sqwiggle
 
       def delete(endpoint)
         connection.delete endpoint
-      end
-
-      def messages
-        Service.new Message, self
-      end
-
-      def users
-        Service.new User, self
-      end
-
-      def conversations
-        Service.new Conversation, self
-      end
-
-      def api_clients
-        ApiClient.new User, self
       end
 
       def inspect

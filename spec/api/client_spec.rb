@@ -27,6 +27,18 @@ describe Sqwiggle::Api::Client do
     end
   end
 
+  describe 'services' do
+    before do
+      Sqwiggle.token = '12345'
+    end
+    it { should respond_to :messages }
+    it { should respond_to :users }
+    it { should respond_to :conversations }
+    it { should respond_to :rooms }
+    it { should respond_to :invites }
+    it { should respond_to :api_clients }
+  end
+
   describe "#get" do
     subject { Sqwiggle::Api::Client.new 'local_token' }
     let(:endpoint) { '/users/1' }
