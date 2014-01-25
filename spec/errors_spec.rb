@@ -7,7 +7,7 @@ describe "api error handling" do
       Sqwiggle.token = 'token'
 
       stub_request(:get, "https://token:X@api.sqwiggle.com/messages").to_return({
-        :body => "[]", 
+        :body => '{"type": "validation","message":"invalid request","param":"name"}', 
         :status => 400, 
         :headers => { 'Content-Length' => 3 }
       })
