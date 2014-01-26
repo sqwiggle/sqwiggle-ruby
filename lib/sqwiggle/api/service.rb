@@ -17,7 +17,7 @@ module Sqwiggle
       end
 
       def new(params={})
-        klass.new {client:client}.merge(params)
+        klass.new ({client:client}.merge(params))
       end
 
     end
