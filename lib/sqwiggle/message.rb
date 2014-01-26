@@ -9,6 +9,8 @@ module Sqwiggle
     attribute :mentions, Array
     attribute :updated_at, DateTime
     attribute :created_at, DateTime
+    attribute :format, String
+    attribute :parse, Boolean, default:true
 
     def author
       if @author[:type] == 'user'

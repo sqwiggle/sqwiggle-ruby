@@ -113,7 +113,7 @@ describe Sqwiggle::Message do
       end
       subject { Sqwiggle::Message.new(text:'The Name') }
       it "saves the new record" do
-        subject.save.should be == true
+        subject.save.should be_true
         subject.id.should be == 1
         assert_requested :post, "https://token:X@api.sqwiggle.com/messages"
       end
@@ -127,7 +127,7 @@ describe Sqwiggle::Message do
       end
       subject { Sqwiggle::Message.new(id:1, text:'The Name') }
       it "saves the new record" do
-        subject.save.should be == true
+        subject.save.should be_true
         assert_requested :put, "https://token:X@api.sqwiggle.com/messages/1"
       end
     end
