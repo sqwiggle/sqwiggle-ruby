@@ -29,10 +29,16 @@ module Sqwiggle
           self.new attrs
         end
 
-        def create(params, client=Client.new)
+        def create!(params, client=Client.new)
           attrs = JSON.parse(client.post("#{endpoint}", params).body)
           attrs.merge! client:client
           self.new attrs
+        end
+
+        def create(params, client=Client.new)
+          create! params, client
+        rescue Errors::BadRequestError 
+          false
         end
 
         def endpoint
@@ -45,25 +51,38 @@ module Sqwiggle
 
       end
 
-      def update(params)
+      def update!(params)
         res = client.put("#{self.class.endpoint}/#{id}", params)
         attrs = JSON.parse(res.body, :symbolize_names => true)
         self.attributes = attrs
         self
       end
 
-      def delete
-        res = client.delete("#{self.class.endpoint}/#{id}")
-        res.status == 204
+      def update(params)
+        update! params
+      rescue Errors::BadRequestError 
+        false
+      end
+
+      def save!
+        return update!(self.attributes) if persisted?
+        self.attributes = self.class.create!(attributes, client).attributes
+        self
       end
 
       def save
-        if(id != nil)
-          update(self.attributes)
-        else
-          self.attributes = self.class.create(attributes, client).attributes
-        end
-        true
+        return update(self.attributes) if persisted?
+        self.attributes = self.class.create(attributes, client).attributes
+        self
+      end
+
+      def persisted?
+        (id != nil)
+      end
+
+      def delete
+        res = client.delete("#{self.class.endpoint}/#{id}")
+        res.status == 204
       end
 
     end
