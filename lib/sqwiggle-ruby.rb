@@ -28,6 +28,10 @@ module Sqwiggle
 
   class << self
     attr_accessor :token
+    def client(t=nil)
+      Api::Client.new (t || Sqwiggle.token)
+    end
   end
+
 end
 
