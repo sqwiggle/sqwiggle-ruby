@@ -63,6 +63,7 @@ module Sqwiggle
           f.request  :url_encoded             # form-encode POST params
           f.adapter  Faraday.default_adapter  # make requests with Net::HTTP
           f.basic_auth token, 'X'
+          f.headers['User-Agent'] = "sqwiggle-ruby #{Sqwiggle::VERSION}"
           f.use ErrorHandler
         end
       end
