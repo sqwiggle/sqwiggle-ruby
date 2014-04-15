@@ -4,7 +4,6 @@ module Sqwiggle
       class NoTokenError < StandardError;end;
 
       attr_accessor :token
-      attr_writer :url #for testing purposes
 
       def initialize(token=nil)
         unless @token = token || Sqwiggle.token
@@ -54,12 +53,8 @@ module Sqwiggle
 
       private
 
-      def url
-        @url || 'https://api.sqwiggle.com/'
-      end
-
       def connection
-        @connection ||= Faraday.new(url:url) do |f|
+        @connection ||= Faraday.new(url:Sqwiggle::Api.url) do |f|
           f.request  :url_encoded             # form-encode POST params
           f.adapter  Faraday.default_adapter  # make requests with Net::HTTP
           f.basic_auth token, 'X'

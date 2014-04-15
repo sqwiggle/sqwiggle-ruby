@@ -4,6 +4,7 @@ require 'virtus'
 
 module Sqwiggle
   module Api
+    require "sqwiggle/api"
     require "sqwiggle/api/error_handler"
     require "sqwiggle/api/service"
     require "sqwiggle/api/client"
