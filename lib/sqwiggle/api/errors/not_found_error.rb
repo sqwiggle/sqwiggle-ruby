@@ -1,7 +1,7 @@
 module Sqwiggle
   module Api
     module Errors
-      class NotFoundError < StandardError;end;
+      class NotFoundError < Base;end;
     end
   end
 end

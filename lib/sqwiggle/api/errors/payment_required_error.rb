@@ -1,7 +1,7 @@
 module Sqwiggle
   module Api
     module Errors
-      class PaymentRequiredError < StandardError;end;
+      class PaymentRequiredError < Base;end;
     end
   end
 end

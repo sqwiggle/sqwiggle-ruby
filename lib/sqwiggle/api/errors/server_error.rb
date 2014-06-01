@@ -1,7 +1,7 @@
 module Sqwiggle
   module Api
     module Errors
-      class ServerError < StandardError;end;
+      class ServerError < Base;end;
     end
   end
 end

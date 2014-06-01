@@ -1,7 +1,7 @@
 module Sqwiggle
   module Api
     module Errors
-      class AuthorizationError < StandardError;end;
+      class AuthorizationError < Base;end;
     end
   end
 end
