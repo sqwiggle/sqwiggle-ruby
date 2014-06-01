@@ -4,7 +4,7 @@ describe Sqwiggle::Api::Errors::BadRequestError do
   let(:response) { double('response') }
 
   before do
-    response.stub(:body) do
+    response.stub(:[]).with(:body) do
       '{"type":"validation","message":"invalid request","param":"name"}'
     end
   end

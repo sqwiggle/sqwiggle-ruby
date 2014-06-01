@@ -10,6 +10,7 @@ module Sqwiggle
     require "sqwiggle/api/client"
     require "sqwiggle/api/resource"
 
+    require "sqwiggle/api/errors/base"
     require "sqwiggle/api/errors/authentication_error"
     require "sqwiggle/api/errors/authorization_error"
     require "sqwiggle/api/errors/bad_request_error"
@@ -18,6 +19,7 @@ module Sqwiggle
     require "sqwiggle/api/errors/server_error"
 
     require "sqwiggle/api_client"
+    require "sqwiggle/contact_request"
     require "sqwiggle/invite"
     require "sqwiggle/message"
     require "sqwiggle/conversation"

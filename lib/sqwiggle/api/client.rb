@@ -19,6 +19,7 @@ module Sqwiggle
 
       service :api_clients, 'ApiClient'
       service :conversations, 'Conversation'
+      service :contact_requests, 'ContactRequest'
       service :invites, 'Invite'
       service :messages, 'Message'
       service :organization, 'Organization'
