@@ -19,25 +19,43 @@ module Sqwiggle
       end
     end
 
-    def approve
+    def approve!
       res = client.put("#{self.class.endpoint}/#{id}/approve", {})
       attrs = JSON.parse(res.body, :symbolize_names => true)
       self.attributes = attrs
       self
     end
 
-    def ignore
+    def approve
+      approve!
+    rescue Sqwiggle::Api::Errors::BadRequestError 
+      false
+    end
+
+    def ignore!
       res = client.put("#{self.class.endpoint}/#{id}/ignore", {})
       attrs = JSON.parse(res.body, :symbolize_names => true)
       self.attributes = attrs
       self
     end
 
-    def cancel
+    def ignore
+      ignore!
+    rescue Sqwiggle::Api::Errors::BadRequestError 
+      false
+    end
+
+    def cancel!
       res = client.put("#{self.class.endpoint}/#{id}/cancel", {})
       attrs = JSON.parse(res.body, :symbolize_names => true)
       self.attributes = attrs
       self
+    end
+
+    def cancel
+      cancel!
+    rescue Sqwiggle::Api::Errors::BadRequestError 
+      false
     end
   end
 end
