@@ -2,17 +2,11 @@ module Sqwiggle
   module Api
     module Errors
       class Base < StandardError
-
-        attr_reader :body
-
-        def initialize(response)
-          @body = JSON.parse response[:body]
-        end
-
-        def message
-          body['message']
-        end
-
+        include Virtus.model
+        attribute :message, String 
+        attribute :details, String
+        attribute :param, String
+        attribute :type, String
       end
     end
   end
