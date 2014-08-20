@@ -11,6 +11,7 @@ describe Sqwiggle::Message do
   describe "attributes" do
     subject { described_class.new }
     it { should respond_to :room_id }
+    it { should respond_to :stream_id }
     it { should respond_to :text }
     it { should respond_to :author }
     it { should respond_to :attachments }

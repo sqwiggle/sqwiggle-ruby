@@ -4,7 +4,7 @@ module Sqwiggle
     attribute :text, String
     attribute :type, String
     attribute :author, Hash
-    attribute :room_id, Integer
+    attribute :stream_id, Integer
     attribute :attachments, Array
     attribute :mentions, Array
     attribute :updated_at, DateTime
@@ -18,6 +18,15 @@ module Sqwiggle
       elsif @author[:type] == 'client'
         client.api_clients.find(@author[:id])
       end
+    end
+
+    #TODO Deprecate
+    def room_id
+      self.stream_id
+    end
+
+    def room_id=(val)
+      self.stream_id = val
     end
 
   end
