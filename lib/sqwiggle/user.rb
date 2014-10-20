@@ -3,7 +3,6 @@ module Sqwiggle
     self.endpoint = '/users'
     attribute :name, String
     attribute :role, String
-    attribute :media, Hash
     attribute :status, String
     attribute :message, String
     attribute :email, String
@@ -13,7 +12,6 @@ module Sqwiggle
     attribute :created_at, DateTime
     attribute :last_connected_at, DateTime
     attribute :last_active_at, DateTime
-    attribute :last_still, String
     attribute :avatar, String
   end
 end
