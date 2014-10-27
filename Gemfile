@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rspec' #for travis
+gem 'rspec-its' #for travis
 gem 'fuubar' #for travis
 gem 'webmock' #for travis
 
