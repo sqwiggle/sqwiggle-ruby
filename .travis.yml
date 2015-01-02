@@ -1,10 +1,10 @@
 bundler_args: --without development
 language: ruby
 rvm:
-  - 1.9.2
   - 1.9.3
   - 2.0.0
   - 2.1.0
+  - 2.1.3
   - rbx
   - ruby-head
 matrix:
@@ -22,6 +22,6 @@ matrix:
   fast_finish: true
 script: bundle exec rspec
 notifications:
-  sqwiggle: 
+  sqwiggle:
     rooms:
       - secure: GCzKzx6svwXQvRekfXojzgJsE7hJz4mb8PMy71d8AWyOYgEGAyKH9Ysb5pXQuMXlWo7esCegzci398FY9+zNzYl8RZxX4AR/uND2scaO8alp09/i6QCz/JdU8JZC5H9tSWPU6xCDAdbPb3XdEYYVZaj23Ckn7SqtYg/KngX5zs8=
