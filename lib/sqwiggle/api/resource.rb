@@ -4,11 +4,15 @@ module Sqwiggle
 
       include Virtus.model
 
-      attribute :client, Client, default: :default_client 
+      attribute :client, Client, default: :default_client
       attribute :id, Integer
 
       def default_client
         Client.new
+      end
+
+      def persisted?
+        (id != nil)
       end
 
       class << self
@@ -37,7 +41,7 @@ module Sqwiggle
 
         def create(params, client=Client.new)
           create! params, client
-        rescue Errors::BadRequestError 
+        rescue Errors::BadRequestError
           false
         end
 
@@ -60,7 +64,7 @@ module Sqwiggle
 
       def update(params)
         update! params
-      rescue Errors::BadRequestError 
+      rescue Errors::BadRequestError
         false
       end
 
@@ -74,10 +78,6 @@ module Sqwiggle
         return update(self.attributes) if persisted?
         self.attributes = self.class.create(attributes, client).attributes
         self
-      end
-
-      def persisted?
-        (id != nil)
       end
 
       def delete

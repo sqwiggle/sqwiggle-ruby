@@ -76,7 +76,7 @@ describe Sqwiggle::Message do
   describe "#update" do
     before do
       stub_request(:put, "https://token:X@api.sqwiggle.com/messages/1").with({
-        :body => { :text => 'New Name' } 
+        :body => { :text => 'New Name' }
       }).to_return({
         :body => "{\"id\":1, \"text\":\"New Name\"}"
       })
@@ -92,7 +92,7 @@ describe Sqwiggle::Message do
   describe ".create" do
     before do
       stub_request(:post, "https://token:X@api.sqwiggle.com/messages").with({
-        :body => { :text => 'The Name' } 
+        :body => { :text => 'The Name' }
       }).to_return({
         :body => "{\"id\":1, \"text\":\"The Name\"}"
       })
@@ -100,7 +100,7 @@ describe Sqwiggle::Message do
 
     it "creates the message" do
       m = Sqwiggle::Message.create :text =>'The Name'
-      m.class.should be == Sqwiggle::Message 
+      m.class.should be == Sqwiggle::Message
       m.text.should be == "The Name"
     end
   end
@@ -114,8 +114,8 @@ describe Sqwiggle::Message do
       end
       subject { Sqwiggle::Message.new(text:'The Name') }
       it "saves the new record" do
-        subject.save.should be_true
-        subject.id.should be == 1
+        expect(subject.save).to be_persisted
+        expect(subject.id).to eq(1)
         assert_requested :post, "https://token:X@api.sqwiggle.com/messages"
       end
     end
@@ -128,7 +128,7 @@ describe Sqwiggle::Message do
       end
       subject { Sqwiggle::Message.new(id:1, text:'The Name') }
       it "saves the new record" do
-        subject.save.should be_true
+        expect(subject.save).to be_persisted
         assert_requested :put, "https://token:X@api.sqwiggle.com/messages/1"
       end
     end
