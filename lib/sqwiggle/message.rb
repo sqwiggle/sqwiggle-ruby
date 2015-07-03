@@ -13,10 +13,10 @@ module Sqwiggle
     attribute :parse, Boolean, default:true
 
     def author
-      if @author[:type] == 'user'
-        client.users.find(@author[:id])
-      elsif @author[:type] == 'client'
-        client.api_clients.find(@author[:id])
+      if @author['type'] == 'user'
+        client.users.find(@author['id'])
+      elsif @author['type'] == 'client'
+        client.api_clients.find(@author['id'])
       end
     end
 
